@@ -30,7 +30,19 @@ public class Item {
 	}
 	
 	public String raw() {
-		return this.value;
+		StringBuffer padded = new StringBuffer(this.value);
+		while(padded.toString().getBytes().length<this.length) {
+			padded.append(' ');
+		}
+		return padded.toString();
+	}
+	
+	public static Item create(String name, int length, String value) {
+		Item item = new Item();
+		item.setName(name);
+		item.setLength(length);
+		item.setValue(value);
+		return item;
 	}
 	
 	public static void main(String[] args) {
