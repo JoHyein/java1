@@ -1,9 +1,13 @@
 package net.wikidocs.tele;
 
+
+//요청 : 이름(10)+전화번호(11)
+//응답 : 생일(8)+주소(30)
+
 public class Item {
-	private String name;
-	private int length;
-	private String value;
+	private String name; //이름
+	private int length; //길이
+	private String value; //값
 	
 	public String getName() {
 		return name;
@@ -37,6 +41,8 @@ public class Item {
 		return padded.toString();
 	}
 	
+	
+	//Item 객체 생성 매소드 static 추가 --> 팩토리 매소드
 	public static Item create(String name, int length, String value) {
 		Item item = new Item();
 		item.setName(name);

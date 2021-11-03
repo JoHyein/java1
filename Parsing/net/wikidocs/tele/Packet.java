@@ -2,6 +2,10 @@ package net.wikidocs.tele;
 
 import java.util.*;
 
+//수신부
+//요청 : 이름(10)+전화번호(11)
+//응답 : 생일(8)+주소(30)
+
 public class Packet {
 	private ArrayList<Item> items = new ArrayList<Item>();
 	private HashMap<String, Item> nameAccess = new HashMap<String, Item>();
@@ -19,7 +23,7 @@ public class Packet {
 		return this.items.get(index);
 	}
 	
-	public Item getItem(String name) {
+	public Item getItem(String name) { //이름으로 탐색
 		return nameAccess.get(name);
 	}
 	
@@ -31,12 +35,12 @@ public class Packet {
 		return result.toString();
 	}
 	
-	public void parse(String data){
-		byte[] bdata = data.getBytes();
+	public void parse(String data){ //파싱 매소드
+		byte[] bdata = data.getBytes(); //바이트 배열로
 		int pos = 0;
 		for(Item item:items) {
-			byte[] temp = new byte[item.getLength()];
-			System.arraycopy(bdata, pos, temp, 0, item.getLength());
+			byte[] temp = new byte[item.getLength()]; //temp 바이트 배열 생성
+			System.arraycopy(bdata, pos, temp, 0, item.getLength()); //값 복사
 			pos+=item.getLength();
 			item.setValue(new String(temp));
 		}

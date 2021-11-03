@@ -1,17 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.*;
 
 
 public class HelloWorldApp{
-	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\java1\\out.txt"));
-		
-		while(true) {
-			String line = br.readLine();
-			if(line==null) break;
-			System.out.println(line);
-		}
-		br.close();
+	public static void main(String[] args){
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("people", "사람");
+		map.put("bakeball", "야구");
+		System.out.println(map.get("people"));
+		System.out.println(map.containsKey("people"));
 	}	
 }
